@@ -6,8 +6,8 @@ dropLastDigit x = x `div` 10
 
 toRevDigits :: Integer -> [Integer]
 toRevDigits x
-	| x <= 0 = []
-	| otherwise = lastDigit x : toRevDigits (dropLastDigit x)
+    | x <= 0 = []
+    | otherwise = lastDigit x : toRevDigits (dropLastDigit x)
 
 
 doubleEveryOther :: [Integer] -> [Integer]
@@ -25,4 +25,6 @@ sumDigits xs = sum (dignify xs)
 
 
 luhn :: Integer -> Bool
-luhn x = (sumDigits (doubleEveryOther (toRevDigits x) ) ) `mod` 10 == 0
+luhn x = (sumDigits  doubledDigits) `mod` 10 == 0
+    where 
+        doubledDigits = doubleEveryOther (toRevDigits x)
